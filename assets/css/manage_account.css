@@ -1,0 +1,195 @@
+/* Base styles for the accounts container */
+        .accounts-container {
+            max-width: 800px; 
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center; 
+            position: relative;
+            margin-top: 100px; /* Adjust if your header height changes */
+            box-sizing: border-box; /* Ensures padding/border are included in width/height */
+        }
+
+        /* Default table styles */
+        .accounts-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .accounts-container th,
+        .accounts-container td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .accounts-container th {
+            background: #f4f4f4;
+        }
+        
+        /* Responsive CSS for the accounts container and table */
+        /* Media query for tablets and smaller desktops (e.g., screens up to 768px wide) */
+
+        /* Media query for mobile devices (e.g., screens up to 500px wide) */
+        @media (max-width: 500px) {
+            .accounts-container {
+                max-width: 95%; /* Make it take almost full width */
+                margin: 15px auto; /* Reduce top/bottom margin */
+                padding: 10px; /* Reduce padding to save space */
+                border-radius: 5px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                margin-top: 12vh; /* Significantly reduce top margin for mobile */
+            }
+
+            /* Responsive Table - Card Layout for mobile */
+            .accounts-container table,
+            .accounts-container thead,
+            .accounts-container tbody,
+            .accounts-container th,
+            .accounts-container td,
+            .accounts-container tr {
+                display: block; /* Make all table elements behave as blocks */
+            }
+
+            .accounts-container thead {
+                display: none; /* Hide the original table header row */
+            }
+
+            .accounts-container tr {
+                margin-bottom: 15px; /* Add space between each "card" (row) */
+                border: 1px solid #ddd; /* Add a border to each "card" */
+                border-radius: 5px;
+                padding: 10px; /* Add padding inside each "card" */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Optional: slight shadow for cards */
+            }
+
+            .accounts-container td {
+                text-align: right; /* Align the cell value to the right */
+                padding-left: 50%; /* Make space for the pseudo-element label */
+                position: relative; /* For absolute positioning of the label */
+                border: none; /* Remove individual cell borders within the card */
+                padding-top: 5px; /* Adjust vertical padding */
+                padding-bottom: 5px;
+            }
+
+            /* Create the data label using the data-label attribute */
+            .accounts-container td::before {
+                content: attr(data-label); /* Get content from data-label attribute */
+                position: absolute;
+                left: 10px; /* Position the label on the left */
+                width: 45%; /* Give the label some width */
+                padding-right: 10px;
+                white-space: nowrap; /* Prevent the label from wrapping */
+                overflow: hidden;
+                text-overflow: ellipsis; /* Add ellipsis if label is too long */
+                font-weight: bold;
+                text-align: left; /* Align the label text to the left */
+            }
+        }
+
+        /* Styles for buttons */
+        .delete-btn, .edit-btn, .save-btn, .cancel-btn { 
+            background: #c62828;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 5px;
+            transition: background 0.2s;
+        }
+        .edit-btn, .save-btn, .cancel-btn { 
+            background: #0d47a1;
+        }
+        .edit-btn:hover, .save-btn:hover, .cancel-btn:hover { 
+            background: #1565c0;
+        }
+        .delete-btn:hover { 
+            background: #a31515;
+        }
+
+        .back-btn { 
+            margin-top: 20px;
+            background: #0d47a1;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 24px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            z-index: 2;
+            text-decoration: none;
+        }
+
+        .back-btn:hover { 
+            background: #1565c0;
+        }
+
+        .edit-fields input { 
+            width: 90px;
+            margin-right: 5px;
+            padding: 4px 6px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .msg { 
+            margin-top: 10px;
+            font-size: 14px;
+            color: #c62828;
+        }
+
+        .msg.success { 
+            color: green;
+        }
+
+        /* Modal popup styling for editing an account */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover { color: red; }
+        form label { display: block; margin-top: 10px; }
+        form input[type="text"],
+        form input[type="password"] { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+        form button { margin-top: 15px; padding: 10px; width: 100%; border: none; background-color: #0d47a1; color: white; font-weight: bold; border-radius: 4px; cursor: pointer; }
+        /* Back button styling */
+        .back-btn {
+            display: inline-block;
+            background-color: #0d47a1;
+            color: #fff;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 10px;
+        }
